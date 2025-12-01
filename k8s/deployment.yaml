@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: astronauts-exporter
-          image: filipewmiranda/prometheus-astronauts-exporter:latest
+          image: filipewmiranda/prometheus-astronauts-exporter:git-ba5a589
           imagePullPolicy: Always
           ports:
             - containerPort: 8899
