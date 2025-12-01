@@ -3,6 +3,9 @@ name: Build, Push Docker image and Update Deployment
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-push-update:
     runs-on: ubuntu-latest
