@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: astronauts-exporter
+  namespace: astronauts-exporter
+  labels:
+    app: astronauts-exporter
+spec:
+  type: ClusterIP
+  selector:
+    app: astronauts-exporter
+  ports:
+    - name: http-metrics
+      port: 8899       # porta dentro do cluster
+      targetPort: 8899 # porta do container

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: astronauts-exporter
+  namespace: astronauts-exporter
+  labels:
+    app: astronauts-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: astronauts-exporter
+  template:
+    metadata:
+      labels:
+        app: astronauts-exporter
+    spec:
+      containers:
+        - name: astronauts-exporter
+          image: filipewmiranda/prometheus-astronauts-exporter:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8899
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8899
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8899
+            initialDelaySeconds: 10
+            periodSeconds: 20

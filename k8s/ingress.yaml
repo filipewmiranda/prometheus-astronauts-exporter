@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: astronauts-exporter-ingress
+  namespace: astronauts-exporter
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: astronauts.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: astronauts-exporter
+                port:
+                  number: 8899
